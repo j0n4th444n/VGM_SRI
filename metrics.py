@@ -1,4 +1,3 @@
-import math
 
 def precision(RR, REC):
     return RR/REC
