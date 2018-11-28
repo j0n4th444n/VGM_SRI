@@ -5,7 +5,6 @@ import requests
 import os
 import sys
 import re
-# from urllib3 import ProxyManager, make_headers
 from bs4 import BeautifulSoup, SoupStrainer
 
 username = r'b.vera%40estudiantes.matcom.uh.cu'
