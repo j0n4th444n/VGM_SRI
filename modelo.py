@@ -6,7 +6,6 @@ import json
 import index
 from nltk import FreqDist
 import text_proc
-from procesamiento_texto import *
 
 
 
@@ -222,7 +221,6 @@ def read_docx(docx_path):
 ##########################################################
 
 #TODO:EXPLICAR
-#TODO: INDEX
 def term_i_Dot_term_j(term_i, term_j):
 	result = 0
 	analized_minterm = []
@@ -278,12 +276,20 @@ def similarity_cosine(query_data, docs):
 			#TODO: FALTA SUMAR TODOS LOS PESOS DE LOS TERM DEL DOC
 			if tm_query_i['key'] in docs[doc]['terms'].keys():
 
-				index_weight_data = docs[doc]['terms'][tm_query_i['key']]
-				weight_doc = docs[doc]['weights'][index_weight_data]
-				sum_weight_in_doc += weight_doc **2
+				# index_weight_data = docs[doc]['terms'][tm_query_i['key']]
+				# weight_doc = docs[doc]['weights'][index_weight_data]
+				# sum_weight_in_doc += weight_doc **2
 
 				weight_query = tm_query_i['value']['documents'][0]['weight']
 				sum_weight_in_query += weight_query **2
+
+		terms_in_doc = json.loads(index.start(json.dumps({'action':'terms', 'key':doc})))['terms']
+
+		for tm_doc in terms_in_doc:
+			tm = get_from_index(tm_doc)
+			for d in tm['documents']:
+				if d['document'] == doc:
+					sum_weight_in_doc += d['weight']**2
 
 		denominador = math.sqrt(sum_weight_in_doc*sum_weight_in_query)
 
