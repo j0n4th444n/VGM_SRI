@@ -88,4 +88,8 @@ def crawler(seed_url,proxy = False,user_name = None,password = None,host_ip = No
     save_indexer(l)
 
 seed = ["https://stackoverflow.com/"]
+<<<<<<< HEAD
 crawler(seed,False,username,password,host,port)
+=======
+crawler(seed,False,username,password,host,port)
+>>>>>>> 268992661d10df0401ffdec8ebc5b269822b518e
