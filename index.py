@@ -1,7 +1,6 @@
 import json
 
 
-
 index = {}
 
 def start (json_request):
@@ -65,7 +64,7 @@ def get(key):
 
     return json.dumps(response)
 
-#devolver todos los terminos de un documento`
+
 def all_term_doc(doc):
     response = {}
     terms = [term for term in index if (doc in index[term]['documents'])]
