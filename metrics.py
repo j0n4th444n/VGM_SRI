@@ -1,9 +1,21 @@
 
 def precision(RR, REC):
-    return RR/REC
+    try:
+        if REC==0:
+            raise Exception()
+        return RR/REC
+    except (Exception):
+        print("Cero Documentos recuperados. Division por cero")
+
 
 def recobrado(RR, REL):
-    return RR/REL
+    try:
+        if REL==0:
+            raise Exception()
+        return RR/REL
+
+    except (Exception):
+        print("Cero Documentos Relevantes. Division por cero")
 
 def f_medida(RR, REL, REC):
     P = precision(RR, REC)

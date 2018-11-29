@@ -285,7 +285,6 @@ class Ui_MainWindow(object):
 
     def make_query(self):
 
-        # print(self.comboBox.currentText())
         for i in reversed(range(self.tableWidget_results.rowCount())):
             self.tableWidget_results.removeRow(i)
         query = self.lineEdit_query.text()
@@ -303,13 +302,6 @@ class Ui_MainWindow(object):
         json_value = json.dumps({'action': 'query', 'query': query, 'count': count_docs, 'similarity_techniques': similarity_techniques})
 
         json_result = json.loads(query_expansion.start(json_value))
-
-        # json_result = json.loads(modelo.model(json_value))
-        print(json_result['results'])
-        # self.tableWidget_results.insertRow(0)
-        #
-        # self.tableWidget_results.setItem(0, 0, QTableWidgetItem("documento"))
-        # self.tableWidget_results.setItem(0, 1, QTableWidgetItem(str(5)))
 
         for pair in json_result['results']:
             row_position = self.tableWidget_results.rowCount()
