@@ -18,7 +18,7 @@ def start (json_request):
     elif json_data['action'] == 'terms':
         return __all_term_doc(json_data['key'])
     elif json_data['action'] == 'terms_frec':
-        return __all_term_doc(json_data['key'])
+        return __all_term_doc_frec(json_data['key'])
     elif json_data['action'] == 'get':
         return __get(json_data['key'])
 
