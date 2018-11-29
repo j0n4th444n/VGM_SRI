@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup, SoupStrainer
 from PyPDF2 import PdfFileReader
 from docx import Document
 
+
 class Doc(Enum):
     web = 1
     pdf = 2
@@ -68,8 +69,13 @@ def read_web_in_path(path):
         soup = BeautifulSoup(data,"html5lib")
         return soup.get_text(strip=True,separator=' ')
 
-def read_word_in_path(data):
-    pass
+# ! funciona perfect
+def read_word_in_path(path):
+    document = Document(path)
+    text = ""
+    for para in document.paragraphs:
+        text += para.text + "\n"
+    return text
 
 def read(path,doc_type,lang=None):
     if os.path.isfile(path):
@@ -78,7 +84,7 @@ def read(path,doc_type,lang=None):
             return read_pdf_in_path(path,lang)
         # ! Word Document (.docx)
         elif doc_type is Doc.word:
-            pass
+            return read_word_in_path(path)
         # ! Web Page(.htm .html)
         else:
             return read_web_in_path(path)
@@ -86,3 +92,4 @@ def read(path,doc_type,lang=None):
 # print(read("C:\\Users\\jonathaaan\\Desktop\\testing\\2018-2019. Orientaciones del proyecto de SI.pdf",Doc.pdf,Lang.ES))
 # print(read("C:\\Users\\jonathaaan\\Desktop\\testing\\to_print-mining-the-news.pdf",Doc.pdf,Lang.EN))
 # print(read("C:\\Users\\jonathaaan\\Desktop\\testing\\test_ibm3.html",Doc.web))
+# print(read("C:\\Users\\jonathaaan\\Desktop\\testing\\test.docx",Doc.word))
