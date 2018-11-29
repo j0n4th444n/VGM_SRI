@@ -1,7 +1,7 @@
 import json
 
 
-index = {}
+__index = {}
 
 def start (json_request):
 
@@ -27,39 +27,39 @@ def __create(data):
     for elem in data:
         key = elem['key']
         value = elem['value']
-        index[key] = value
+        __index[key] = value
 
 def __add(key , value):       # TODO: ver try, catch here
     try:
-        if key in index:
+        if key in __index:
             raise Exception()
-        index[key] = value
+        __index[key] = value
     except(Exception):
-            print("No se puede agregar " + key + " ya existe en el index")
+            print("No se puede agregar " + key + " ya existe en el __index")
 
 def __update(key, value):
     try:
-        if key not in index:
+        if key not in __index:
             raise(Exception)
-        index[key] = value
+        __index[key] = value
     except(Exception):
-        print("El termino " + key + " no existe en el index" )
+        print("El termino " + key + " no existe en el __index" )
 
 
 def __delete(key):
     try:
-        if key not in index:
+        if key not in __index:
             raise(Exception)
-        index.pop(key)
+        __index.pop(key)
     except(Exception):
         print("el termino " + key + " no existe")
 
 def __get(key):
     response = {}
 
-    if key in index:
+    if key in __index:
         response['success'] = True
-        response['value'] = index[key]
+        response['value'] = __index[key]
     else:
         response['success'] = False
         response['value'] = None
@@ -69,14 +69,14 @@ def __get(key):
 
 def __all_term_doc(doc):
     response = {}
-    terms = [term for term in index if (doc in index[term]['documents'])]
+    terms = [term for term in __index if (doc in __index[term]['documents'])]
     response['terms'] = terms
 
     return json.dumps(response)
 
 def __all_term_doc_frec(doc):
     response = {}
-    terms = [(term, index[term]['documents'][doc]['tf']) for term in index if (doc in index[term]['documents'])]
+    terms = [(term, __index[term]['documents'][doc]['tf']) for term in __index if (doc in __index[term]['documents'])]
     response['terms'] = terms
 
     return json.dumps(response)

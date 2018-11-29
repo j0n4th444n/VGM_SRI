@@ -1,2 +1,2 @@
-# VGM_SRI
+VGM_SRI
 SRI Modelo Vectorial Generalizado
