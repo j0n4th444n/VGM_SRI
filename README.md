@@ -27,15 +27,15 @@ Curso 2018-2019
 #### 5. Expansión de Consulta
 >#### 5.1 Expansion de Consultas basado en WordNet
 
->> WordNet is a lexical database for multiple languages. The similar terms from multiple languages are connected via synsets (set of senses). WordNet can be used to fetch re-lated term for a particular term in multiple languages and can help in satisfying user’s information need.
+>> WordNet es una base de datos léxica para múltiples idiomas. Los términos similares de varios idiomas se conectan mediante synsets (conjunto de sentidos). WordNet se puede usar para obtener términos relacionados para un término en particular en varios idiomas y puede ayudar a satisfacer la necesidad de información del usuario.
 
 >>Por lo que apoyándonos en WordNet, agregamos a la consulta inicial del usuario aquellas palabras que presenten mayor similaridad con los términos de la consulta.
 
 >#### 5.2 Expansion de Consultas basado en Relevance FeedBack 
->>Relevance feedback based methods execute the initial query on collection and extract top k documents. Then the ranked document are used to improve the performance of retrieval. It is assumed that the initial retrieved documents are relevant and thus can be used to extract expansion terms. These models fail when the initial retrieval algorithm of search engine is poor.
+>>Los métodos basados ​​en Relevance feedback ejecutan la consulta inicial en el repositorio y extraen los mejores k documentos. Luego, dos documento obtenidos se utilizan para mejorar el rendimiento de la recuperación. Se supone que los documentos iniciales recuperados son relevantes y, por lo tanto, se pueden usar para extraer términos de expansión. Estos modelos fallan cuando el algoritmo de recuperación inicial del motor de búsqueda es deficiente.
 
 >>#### 5.2.1 Pseudo Relevance FeedBack (PRF)
->>> In Pseudo Relevance Feedback based models initial query is fired and top k results are obtained. Then important terms, mostly based on co-occurrence, from these documents are extracted and added to query. Then this expanded query is re fired to retrieve final set of documents which are made available to the user. The relevancy of expansion terms depends upon the initial retrieved documents. En la siguiente imagen vemos representado este esquema:
+>>> En los modelos basados ​​en Pseudo Relevance Feedback, la consulta inicial se activa y se obtienen los mejores k resultados. Luego los términos importantes, en nuestro caso basados ​​en co-ocurrencia, de estos documentos son extraídos y añadidos a la consulta. Luego, está consulta expandida se vuelve a activar para recuperar el conjunto final de documentos que están disponibles para el usuario. La relevancia de los términos de expansión depende de los documentos iniciales recuperados.
 
 >>>![Pseudo Relevance schema](modelo_FB.png)
 
