@@ -8,4 +8,3 @@ def read_html_in_path(path):
 
 def read_word_in_path(path):
     pass
-
