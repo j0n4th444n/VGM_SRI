@@ -18,7 +18,7 @@ class Lang(Enum):
     EN = 2
 
 # ! funciona perfect
-def read_pdf_in_path(path,lang):
+def __read_pdf_in_path(path,lang):
     with open(path,'rb') as f:
         if lang is Lang.ES:
             pdf = PdfFileReader(f)
@@ -40,7 +40,7 @@ def read_pdf_in_path(path,lang):
             return text
 
 # ! funciona perfect
-def read_web_in_path(path):
+def __read_web_in_path(path):
     with open(path,'r',encoding='utf8',errors='ignore') as f:
         data = f.read()
         while(True):
@@ -70,24 +70,32 @@ def read_web_in_path(path):
         return soup.get_text(strip=True,separator=' ')
 
 # ! funciona perfect
-def read_word_in_path(path):
+def __read_word_in_path(path):
     document = Document(path)
     text = ""
     for para in document.paragraphs:
         text += para.text + "\n"
     return text
 
-def read(path,doc_type,lang=None):
+def __read_txt_in_path(txt_path):
+    with open(txt_path, "r", encoding="utf8", errors="ignore") as f:
+        document = f.read()
+        return document
+
+def read(path : str,lang=None):
     if os.path.isfile(path):
         # ! PDF (.pdf)
-        if doc_type is Doc.pdf:
-            return read_pdf_in_path(path,lang)
+        if path.endswith('.pdf') is Doc.pdf:
+            return __read_pdf_in_path(path,lang)
         # ! Word Document (.docx)
-        elif doc_type is Doc.word:
-            return read_word_in_path(path)
+        elif path.endswith('.doc') or path.endswith('.docx'):
+            return __read_word_in_path(path)
         # ! Web Page(.htm .html)
-        else:
-            return read_web_in_path(path)
+        elif path.endswith('.htm') or path.endswith('.html'):
+            return __read_web_in_path(path)
+        # ! Text Documents (.txt)
+        elif path.endswith('.txt'):
+            return __read_txt_in_path(path)
 
 # print(read("C:\\Users\\jonathaaan\\Desktop\\testing\\2018-2019. Orientaciones del proyecto de SI.pdf",Doc.pdf,Lang.ES))
 # print(read("C:\\Users\\jonathaaan\\Desktop\\testing\\to_print-mining-the-news.pdf",Doc.pdf,Lang.EN))
