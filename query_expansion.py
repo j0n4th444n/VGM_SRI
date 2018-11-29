@@ -45,7 +45,7 @@ def pseudo_Relevance_Feedback(documents):
     relevant_words = set()
 
     for doc in documents:
-        json_request = json.dumps({'action': 'terms', 'key': doc})
+        json_request = json.dumps({'action': 'terms_frec', 'key': doc})
         json_response = json.loads(index.start(json_request))
         lista = json_response['terms']
         lista.sort(key=lambda x: x[1], reverse=True)

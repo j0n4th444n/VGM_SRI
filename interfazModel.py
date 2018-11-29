@@ -302,8 +302,8 @@ class Ui_MainWindow(object):
 
         json_value = json.dumps({'action': 'query', 'query': query, 'count': count_docs, 'similarity_techniques': similarity_techniques})
 
-        #TODO: LA LLAMADA DE LA QUERY AL MODULO QUERY_EXPANSION
         json_result = json.loads(query_expansion.start(json_value))
+
         # json_result = json.loads(modelo.model(json_value))
         print(json_result['results'])
         # self.tableWidget_results.insertRow(0)
