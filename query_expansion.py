@@ -31,7 +31,7 @@ def start(json_request):
 
     relevant_words =  pseudo_Relevance_Feedback(documents)
 
-    words = data['query'] + relevant_words
+    words = data['query'] + " " + relevant_words
 
     # TODO: SI LA QUERY ESTA EN INGLES HACEMOS TRABAJO CON SINONIMOS
     # if detect(data['query']) == 'en':
