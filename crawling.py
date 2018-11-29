@@ -70,22 +70,28 @@ def save_indexer(links):
         for link in links:
             f.write(link+"\n")
 
-def crawler(seed_url,proxy = False,user_name = None,password = None,host_ip = None,port = None):
+def real_web_name(url : str):
+    return url.count('.ico')
+
+def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip = None,port = None):
     l = []
     q = queue.Queue()
     for url in seed_url:
-        q.put(url)
+        q.put((url,1))
     while(not q.empty()):
-        url = q.get()
+        url,d = q.get()
         l.append(url)
         html = download(url,proxy)
         links = get_links(html,url)
         text = get_text_from_html(html)
         save_doc(url,text)
-        for (link,form) in links:
-            if link not in q.queue:
-                q.put(link)
+        if d >= deep:
+            q.get()
+            continue
+        for (link, _) in links:
+            if link not in q.queue or link not in l:
+                q.put((link,d+1))
     save_indexer(l)
 
 seed = ["https://stackoverflow.com/"]
-crawler(seed,False,username,password,host,port)
+crawler(seed,2,False,username,password,host,port)
