@@ -9,6 +9,7 @@ import text_proc
 
 
 
+
 def model(json_request):
 
 	data = json.loads(json_request)
@@ -97,8 +98,7 @@ def append_terms(doc, terms, data, minterm_doc,vector):
 
 	for term in tf.keys():
 		normalize_tf = tf[term] / max_tf
-		new_doc = {'document': doc,
-				   'tf': normalize_tf,
+		new_doc = {'tf': normalize_tf,
 				   'weight': 0,
 				   'minterm':minterm_doc}
 		in_data = False
@@ -106,7 +106,7 @@ def append_terms(doc, terms, data, minterm_doc,vector):
 			if term == term_data['key']:
 
 				#update
-				term_data['value']['documents'].append(new_doc)
+				term_data['value']['documents'][doc] = new_doc
 				in_data = True
 				break
 
@@ -114,7 +114,7 @@ def append_terms(doc, terms, data, minterm_doc,vector):
 			# add
 			data.append({'key': term,
 						 'value': {'idf':0,
-									'documents': [new_doc],
+									'documents': {doc:new_doc},
 									'index_in_vector': vector[term]}})
 
 def append_idfs(data, N):
@@ -124,8 +124,8 @@ def append_idfs(data, N):
 def append_weights(data):
 
 	for term in data:
-		for doc in term['value']['documents']:
-			doc['weight'] = get_weight_term_doc(data, term, doc)
+		for doc in term['value']['documents'].keys():
+			term['value']['documents'][doc]['weight'] = get_weight_term_doc(data, term, (doc,term['value']['documents'][doc]))
 
 #TODO: Index doc[terms]
 #TODO values = value
@@ -136,11 +136,11 @@ def get_weight_term_doc(data, term, doc):
 
 	term = term['value']
 
-	weight = doc['tf'] * term['idf']
+	weight = doc[1]['tf'] * term['idf']
 
-	ter_doc = [tm for tm in data if doc in tm['value']['documents']]
-	list_for_sum = [(tm['value']['idf'] * dc['tf']) ** 2 for tm in ter_doc for dc in tm['value']['documents'] if
-					dc['document'] == doc['document']]
+	ter_doc = [tm for tm in data if doc[0] in tm['value']['documents'].keys()]
+	list_for_sum = [(tm['value']['idf'] * tm['value']['documents'][dc]['tf']) ** 2 for tm in ter_doc for  dc in tm['value']['documents'] if
+					dc == doc[0]]
 
 	doc_norm = math.sqrt(sum(list_for_sum))
 
@@ -151,9 +151,10 @@ def get_vector(docs_text):
 
 	all_docs_together = ""
 	vector_of_terms = []
-
+	i=0
 	for doc in docs_text:
-
+		print(os.path.basename(doc[0]))
+		i+=1
 		json_process = json.dumps({'action': 'process', 'data': doc[1]})
 		json_request =json.loads(text_proc.text_work(json_process))
 		vector_of_terms = vector_of_terms + json_request['terms']
@@ -183,12 +184,12 @@ def get_docs_from_query(query_terms):
 		json_respons = json.loads(index.start(json.dumps({'action':'get', 'key':term})))
 		if json_respons['success']:
 			term_value = json_respons['value']
-			for doc in term_value['documents']:
-				if doc['document'] not in docs:
-					docs[doc['document']] = {'terms': {term: 0}, 'weights': [doc['weight']]}
+			for doc in term_value['documents'].keys():
+				if doc not in docs:
+					docs[doc] = {'terms': {term: 0}, 'weights': [term_value['documents'][doc]['weight']]}
 				else:
-					docs[doc['document']]['terms'][term] = len(docs[doc['document']]['weights'])
-					docs[doc['document']]['weights'].append(doc['weight'])
+					docs[doc]['terms'][term] = len(docs[doc]['weights'])
+					docs[doc]['weights'].append(term_value['documents'][doc]['weight'])
 
 	return docs
 
@@ -225,21 +226,21 @@ def term_i_Dot_term_j(term_i, term_j):
 	result = 0
 	analized_minterm = []
 	for doc_tm_i in term_i['documents']:
-		if doc_tm_i['minterm'] not in analized_minterm and \
-						doc_tm_i['minterm'][term_i['index_in_vector']] == '1' and doc_tm_i['minterm'][term_j['index_in_vector']] == '1':
-			result += ci_r(term_i,doc_tm_i['minterm'])*ci_r(term_j,doc_tm_i['minterm'])
-			analized_minterm.append(doc_tm_i['minterm'])
+		if term_i['documents'][doc_tm_i]['minterm'] not in analized_minterm and \
+				term_i['documents'][doc_tm_i]['minterm'][term_i['index_in_vector']] == '1' and term_i['documents'][doc_tm_i]['minterm'][term_j['index_in_vector']] == '1':
+			result += ci_r(term_i,term_i['documents'][doc_tm_i]['minterm'])*ci_r(term_j,term_i['documents'][doc_tm_i]['minterm'])
+			analized_minterm.append(term_i['documents'][doc_tm_i]['minterm'])
 
-	for doc_tm_j in term_j['documents']:
-		if doc_tm_j['minterm'] not in analized_minterm and \
-						doc_tm_j['minterm'][term_i['index_in_vector']] == '1' and doc_tm_j['minterm'][term_j['index_in_vector']] == '1':
-			result += ci_r(term_i,doc_tm_j['minterm'])*ci_r(term_j,doc_tm_j['minterm'])
-			analized_minterm.append(doc_tm_j['minterm'])
+	for  doc_tm_j in term_j['documents']:
+		if term_j['documents'][doc_tm_j]['minterm'] not in analized_minterm and \
+				term_j['documents'][doc_tm_j]['minterm'][term_i['index_in_vector']] == '1' and term_j['documents'][doc_tm_j]['minterm'][term_j['index_in_vector']] == '1':
+			result += ci_r(term_i,term_j['documents'][doc_tm_j]['minterm'])*ci_r(term_j,term_j['documents'][doc_tm_j]['minterm'])
+			analized_minterm.append(term_j['documents'][doc_tm_j]['minterm'])
 
 	return result
 
 def ci_r(term_i, minterm_r):
-	return sum([doc['weight'] for doc in term_i['documents'] if doc['minterm'] == minterm_r ])
+	return sum([term_i['documents'][doc]['weight'] for  doc in term_i['documents'] if term_i['documents'][doc]['minterm'] == minterm_r ])
 
 ##########################################################
 
@@ -257,7 +258,7 @@ def similarity_cosine(query_data, docs):
 		for tm_query_i in query_data:
 			for tm_query_j in query_data:
 				if tm_query_i['key'] in docs[doc]['terms'].keys():
-					weight_query_i = tm_query_i['value']['documents'][0]['weight']
+					weight_query_i = tm_query_i['value']['documents']['query']['weight']
 					index_weight_data = docs[doc]['terms'][tm_query_i['key']]
 					weight_doc_j = docs[doc]['weights'][index_weight_data]
 					tmI = {}
@@ -265,7 +266,7 @@ def similarity_cosine(query_data, docs):
 					tm = get_from_index(tm_query_i['key'])
 					if tm['success']:
 						tmI = tm['value']
-					tm = get_from_index(tm_query_i['key'])
+					tm = get_from_index(tm_query_j['key'])
 
 					if tm['success']:
 						tmJ = tm['value']
@@ -273,23 +274,22 @@ def similarity_cosine(query_data, docs):
 
 					numerador += weight_query_i * weight_doc_j * tmI_dot_tmJ
 
-			#TODO: FALTA SUMAR TODOS LOS PESOS DE LOS TERM DEL DOC
 			if tm_query_i['key'] in docs[doc]['terms'].keys():
 
-				# index_weight_data = docs[doc]['terms'][tm_query_i['key']]
-				# weight_doc = docs[doc]['weights'][index_weight_data]
-				# sum_weight_in_doc += weight_doc **2
 
-				weight_query = tm_query_i['value']['documents'][0]['weight']
+				weight_query = tm_query_i['value']['documents']['query']['weight']
 				sum_weight_in_query += weight_query **2
 
-		terms_in_doc = json.loads(index.start(json.dumps({'action':'terms', 'key':doc})))['terms']
+		json_request = json.dumps({'action':'terms', 'key':doc})
+		json_responsive = index.start(json_request)
+		result = json.loads(json_responsive)
+		terms_in_doc = result['terms']
 
 		for tm_doc in terms_in_doc:
-			tm = get_from_index(tm_doc)
+			tm = get_from_index(tm_doc)['value']
 			for d in tm['documents']:
-				if d['document'] == doc:
-					sum_weight_in_doc += d['weight']**2
+				if d == doc:
+					sum_weight_in_doc += tm['documents'][d]['weight']**2
 
 		denominador = math.sqrt(sum_weight_in_doc*sum_weight_in_query)
 

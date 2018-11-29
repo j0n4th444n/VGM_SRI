@@ -4,20 +4,24 @@ import socket
 import requests
 import os
 import sys
-from urllib3 import ProxyManager, make_headers
+import re
 from bs4 import BeautifulSoup, SoupStrainer
 
-directory = os.getcwd()
+username = r'b.vera%40estudiantes.matcom.uh.cu'
+password = r'T%40Ta30091992*'
+host = "10.6.100.71"
+port = 3128
 
-def download(url,http):
-    return http.request('GET',http).data
+proxies = {
+    'http': f'http://{username}:{password}@{host}:{port}',
+    'https': f'https://{username}:{password}@{host}:{port}'
+}
+
+def download(url,use_proxy):
+    return requests.get(url, proxies=proxies).text if use_proxy else requests.get(url).text
 
 def get_links(page,url):
-    list = []
-    soup = BeautifulSoup(page)
-    for link in soup.find_all('a'):
-        list.append(link.get('href'))
-    return list
+    return re.findall('"((http)s?://.*?)"', page)
 
 def get_text_from_html(data):
     # removing js
@@ -54,48 +58,41 @@ def get_ip_from_host(url_host):
         ips=[]
     return ips[0] if len(ips) > 0 else None
 
-def replace_win_name(direction,url):
-    """
-    direction: True  -> convert url into windows folder name
-    direction: False -> convert windows folder name into url
-    """
-    if direction:
-        url = url.replace('/','_')
-        url = url.replace(':','..')
-        return url
-    else:
-        url = url.replace('_','/')
-        url = url.replace('..',':')
-        return url
+def create_name(folder):    
+    return os.path.join(folder,str(len(os.listdir('crawling')))+".text")
 
-def create_name():
-    # ! remplacing special simbols
-    d = os.path.join("crawling",str(len(os.listdir("crawling")))+".txt")
-    return d
-
-def save_doc(text):
-    with open(create_name(),'w', encoding='utf8', errors='ignore') as f:
+def save_doc(url,text):
+    with open(create_name('crawling'),'w', encoding='utf8', errors='ignore') as f:
         f.write(text)
 
-def crawler(seed_url,proxy = False,user_name = None,password = None,host_ip = None,port = None):
-    dict = {}
-    if proxy:
-        default_headers = make_headers(proxy_basic_auth=user_name+':'+password)
-        http = ProxyManager("https://"+ host_ip +":" +port, headers=default_headers)
+def save_indexer(links):
+    with open(create_name('ind_url'),'w', encoding='utf8', errors='ignore') as f:
+        for link in links:
+            f.write(link+"\n")
+
+def real_web_name(url : str):
+    return url.count('.ico')
+
+def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip = None,port = None):
+    l = []
     q = queue.Queue()
     for url in seed_url:
-        q.put(url)
-
+        q.put((url,1))
     while(not q.empty()):
-        url = q.get()
-        html = download(url,http)
+        url,d = q.get()
+        l.append(url)
+        html = download(url,proxy)
+        links = get_links(html,url)
         text = get_text_from_html(html)
-        save_doc(text)
-        for link in get_links(html,url):
-            if link not in q.queue:
-                q.put(link)
+        save_doc(url,text)
+        if d >= deep:
+            q.get()
+            continue
+        for (link, _) in links:
+            if link not in q.queue or link not in l:
+                q.put((link,d+1))
+    save_indexer(l)
 
-# with open('prueba.htm','r',encoding='utf8',errors='ignore') as f:
-#     data =f.read()
-# text = get_text_from_html(data)
-# save_doc('asd',text)
+seed = ["https://stackoverflow.com/"]
+
+crawler(seed,2,False,username,password,host,port)

@@ -25,7 +25,7 @@ non_words.extend(map(str,range(10)))
 
 
 
-replacement_patterns = [(r'[wW]on\'t', 'will not'),
+__replacement_patterns = [(r'[wW]on\'t', 'will not'),
                         (r'[cC]an\'t', 'can not'),
                         (r'[iI]\'m', 'i am'),
                         (r'[aA]in\'t', 'is not'),
@@ -54,20 +54,20 @@ replacement_patterns = [(r'[wW]on\'t', 'will not'),
 def text_work(json_request):
     data = json.loads(json_request)
     if data['action'] == 'process':
-        terms = tokenisation(data['data'])
+        terms = __tokenisation(data['data'])
         return json.dumps({'terms': terms})
 
 
-def replace( text):
+def __replace( text):
     s = text
-    for (pattern, repl) in replacement_patterns:
+    for (pattern, repl) in __replacement_patterns:
         s = re.sub(pattern, repl, s)
     return s
 
 
-def tokenisation(data):
+def __tokenisation(data):
 
-    data = replace(data)
+    data = __replace(data)
 
     lang = detect(data)
     tokens = wordpunct_tokenize(data)
@@ -79,43 +79,3 @@ def tokenisation(data):
     tokens_stem = [stemmer.stem(token) for token in tokens]
 
     return tokens_stem
-
-
-
-
-
-if __name__ == "__main__":
-    text = """  If this book: "has" a central thesis, it rests upon the simple but
-frequently neglected principle that college library service goes
-beyond the commonly accepted functions of book circulation and
-storage.  The college library exists, not merely to house and
-circulate library materials, but to supplement and extend the teaching
-process with reference service, to afford faculty members library
-opportunities for improving instruction, and to encourage students
-to read more and better books.  Administration's essentially a
-service activity, a tool through which library aren't functions're more
-fully and efficiently realized.
-  The present work retains most of the material of the first edition,
-but includes substantial revision in each chapter.  The book was
-planned not only as a text in the teaching of college library
-administration but also for independent professional reading.  Because
-readers have found the footnotes and chapter bibliographies useful
-for reference purposes, they have been brought up to date and in
-some cases extended.
-"""
-
-    # tokens= text_work(text)
-    # tokens = wordpunct_tokenize(text)
-    # tokens = word_tokenize(text)
-
-    # tokens = _clean_text(text)
-    #
-    # for elem in tokens:
-    #     print(elem)
-    #
-    # print("s" in stopwords.words('spanish'))
-    # print(stopwords.words('spanish'))
-    tokens = tokenisation(text)
-
-    for el in tokens:
-        print(el)
