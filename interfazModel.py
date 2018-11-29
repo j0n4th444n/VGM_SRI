@@ -13,6 +13,7 @@ import json
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMessageBox, QFileDialog, QMainWindow, QWidget, QTableWidgetItem
 from PyQt5.QtWidgets import  QCheckBox, QHBoxLayout
+import query_expansion
 import PyQt5.QtCore as Qt
 
 class Ui_MainWindow(object):
@@ -300,7 +301,10 @@ class Ui_MainWindow(object):
         self.label_query.setText("execcuting query")
 
         json_value = json.dumps({'action': 'query', 'query': query, 'count': count_docs, 'similarity_techniques': similarity_techniques})
-        json_result = json.loads(modelo.model(json_value))
+
+        #TODO: LA LLAMADA DE LA QUERY AL MODULO QUERY_EXPANSION
+        json_result = json.loads(query_expansion.start(json_value))
+        # json_result = json.loads(modelo.model(json_value))
         print(json_result['results'])
         # self.tableWidget_results.insertRow(0)
         #
@@ -316,9 +320,7 @@ class Ui_MainWindow(object):
             self.tableWidget_results.setItem(row_position, 1, QTableWidgetItem(str(pair["match"])))
         self.enable_buttons()
         self.label_query.setText("")
-        # TODO:Victor
 
-    # def calculate_metrics(self):
 
     def disable_buttons(self):
         self.toolButton_select_directory.setEnabled(False)

@@ -16,7 +16,7 @@ def start (json_request):
     elif json_data['action'] == 'delete':
         __delete(json_data['key'])
     elif json_data['action'] == 'terms':
-        __all_term_doc(json_data['key'])
+        return __all_term_doc(json_data['key'])
     elif json_data['action'] == 'get':
         return __get(json_data['key'])
 
@@ -65,41 +65,52 @@ def __get(key):
     return json.dumps(response)
 
 
-# def __all_term_doc(doc):
-#     response = {}
-#     terms = [term for term in index if (doc in index[term]['documents'])]
-#     response['terms'] = terms
-#
-#     return json.dumps(response)
-
-
 def __all_term_doc(doc):
     response = {}
-    terms=[]
-    for term in index:
-        for dicc in index[term]['documents']:
-            if dicc['document']==doc:
-                terms.append(term)
-                break
+    # terms = [term for term in index if (doc in index[term]['documents'])]
+    terms = [(term, index[term]['documents'][doc]['tf']) for term in index if (doc in index[term]['documents'])]
     response['terms'] = terms
 
     return json.dumps(response)
 
 
+# def __all_term_doc(doc):
+#     response = {}
+#     terms=[]
+#     for term in index:
+#         for dicc in index[term]['documents']:
+#             if dicc['document']==doc:
+#                 aux=(term, dicc['tf'])
+#                 terms.append(aux)
+#                 break
+#     response['terms'] = terms
+#
+#     return json.dumps(response)
 
+
+#
 # index={'uno':{'idf':4,
-#               'documents':[{'document':"doc1",
-#                             'if': 45,
-#                             'weight':45
-#                             }]
+#               'documents':{"doc1":{'tf': 45,
+#                                    'weight':45
+#                                    },
+#                            "doc2":{'tf': 3,
+#                                     'weight': 8
+#                                    }
+#                             }
+#
 #               },
 #         'dos':{'idf':4,
-#               'documents':[{'document':"doc",
-#                             'if': 45,
-#                             'weight':45
-#                             }]
+#               'documents':{"doc1":{'tf': 45,
+#                                    'weight':45
+#                                    },
+#                            "doc2":{'tf': 45,
+#                                     'weight': 45
+#                                    }
+#                             }
+#
 #               }
 #        }
-#
-# terms = __all_term_doc("doc1")
+# ss = index['uno']['documents']['doc2']['tf']
+# print(ss)
+# terms = __all_term_doc("doc2")
 # print(terms)

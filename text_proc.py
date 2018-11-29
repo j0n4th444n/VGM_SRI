@@ -57,6 +57,7 @@ def text_work(json_request):
         terms = __tokenisation(data['data'])
         return json.dumps({'terms': terms})
 
+# resp = json.dumps({'action':'process', 'data':texto})
 
 def __replace( text):
     s = text
@@ -66,6 +67,9 @@ def __replace( text):
 
 
 def __tokenisation(data):
+
+    if len(data)==0:
+        return []
 
     data = __replace(data)
 
@@ -79,3 +83,6 @@ def __tokenisation(data):
     tokens_stem = [stemmer.stem(token) for token in tokens]
 
     return tokens_stem
+
+
+# asd = __tokenisation("56516816816516 16 5168 13 16 81 616 1 1 75 61 68 ")
