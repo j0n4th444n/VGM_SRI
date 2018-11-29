@@ -86,6 +86,3 @@ def __tokenisation(data):
     tokens_stem = [stemmer.stem(token) for token in tokens]
 
     return tokens_stem
-
-
-asd = __tokenisation("56516816816516  r16 5168 13 16 81 616 1 1 75 61 68 ")
