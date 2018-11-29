@@ -67,7 +67,6 @@ def __get(key):
 
 def __all_term_doc(doc):
     response = {}
-    # terms = [term for term in index if (doc in index[term]['documents'])]
     terms = [(term, index[term]['documents'][doc]['tf']) for term in index if (doc in index[term]['documents'])]
     response['terms'] = terms
 
@@ -80,13 +79,11 @@ def __all_term_doc(doc):
 #     for term in index:
 #         for dicc in index[term]['documents']:
 #             if dicc['document']==doc:
-#                 aux=(term, dicc['tf'])
-#                 terms.append(aux)
+#                 terms.append(term)
 #                 break
 #     response['terms'] = terms
 #
 #     return json.dumps(response)
-
 
 #
 # index={'uno':{'idf':4,

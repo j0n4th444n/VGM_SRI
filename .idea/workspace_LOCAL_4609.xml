@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="8bb0a425-42cf-40e5-b390-9cc9ac33c7e9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-=======
     <list default="true" id="96bc4324-fd96-42f9-9b55-bca797b23227" name="Default" comment="">
-<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.py" afterPath="$PROJECT_DIR$/index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metrics.py" afterPath="$PROJECT_DIR$/metrics.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo.py" afterPath="$PROJECT_DIR$/modelo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_proc.py" afterPath="$PROJECT_DIR$/text_proc.py" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,43 +12,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/VGM_SRI$interfazModel.coverage" NAME="interfazModel Coverage Results" MODIFIED="1543455029995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VGM_SRI$query_expansion.coverage" NAME="query_expansion Coverage Results" MODIFIED="1543455931703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VGM_SRI$text_proc.coverage" NAME="text_proc Coverage Results" MODIFIED="1543458359487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VGM_SRI$index.coverage" NAME="index Coverage Results" MODIFIED="1543455294879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-=======
-<<<<<<< HEAD
-    <SUITE FILE_PATH="coverage/VGM_SRI$interfazModel.coverage" NAME="interfazModel Coverage Results" MODIFIED="1543439924232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="modelo.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#1695#1724#0" expanded="false" />
-                <element signature="e#1864#2677#0" expanded="false" />
-                <element signature="e#3750#3773#0" expanded="false" />
-                <element signature="e#4819#4940#0" expanded="false" />
-                <element signature="e#5752#5942#0" expanded="false" />
-                <element signature="e#5969#6087#0" expanded="false" />
-                <element signature="e#6124#6128#0" expanded="false" />
-                <element signature="e#6169#6173#0" expanded="false" />
-                <element signature="e#6214#6218#0" expanded="false" />
-                <element signature="e#7878#8384#0" expanded="false" />
-                <element signature="e#9212#9216#0" expanded="false" />
-                <element signature="e#9258#9262#0" expanded="false" />
-                <element signature="e#9307#9311#0" expanded="false" />
-                <element signature="e#9364#9839#0" expanded="false" />
-=======
-    <SUITE FILE_PATH="coverage/VGM_SRI$interfazModel.coverage" NAME="interfazModel Coverage Results" MODIFIED="1543435164924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VGM_SRI$query_expansion.coverage" NAME="query_expansion Coverage Results" MODIFIED="1543437984524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VGM_SRI$index.coverage" NAME="index Coverage Results" MODIFIED="1543439112011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
   </component>
   <component name="FileEditorManager">
     <leaf>
@@ -92,29 +47,13 @@
       <file leaf-file-name="index.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.py">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="170">
               <caret line="70" column="20" lean-forward="false" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
               <folding />
-=======
-            <state relative-caret-position="34">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
-              </folding>
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="interfazModel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/interfazModel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-=======
       <file leaf-file-name="text_proc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/text_proc.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -128,14 +67,8 @@
       <file leaf-file-name="genericpath.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/lib/python3.7/genericpath.py">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="184">
               <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-=======
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
               <folding />
             </state>
           </provider>
@@ -144,24 +77,13 @@
       <file leaf-file-name="posixpath.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/lib/python3.7/posixpath.py">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="277">
               <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="-822">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
-            <state relative-caret-position="622">
-              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="query_expansion.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/query_expansion.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -183,30 +105,12 @@
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#449#1729#0" expanded="false" />
               </folding>
-=======
-<<<<<<< HEAD
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="108" column="21" lean-forward="false" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
-=======
-      <file leaf-file-name="query_expansion.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/query_expansion.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
-              <folding />
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-<<<<<<< HEAD
-=======
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -221,33 +125,18 @@
       <find>request</find>
     </findStrings>
   </component>
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/modelo.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-=======
-        <option value="$PROJECT_DIR$/interfazModel.py" />
-        <option value="$PROJECT_DIR$/text_proc.py" />
-        <option value="$PROJECT_DIR$/modelo.py" />
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
         <option value="$PROJECT_DIR$/metrics.py" />
         <option value="$PROJECT_DIR$/modelo.py" />
         <option value="$PROJECT_DIR$/index.py" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/query_expansion.py" />
         <option value="$PROJECT_DIR$/text_proc.py" />
         <option value="$PROJECT_DIR$/interfazModel.py" />
-=======
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
       </list>
     </option>
   </component>
@@ -258,17 +147,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-<<<<<<< HEAD
-    <option name="x" value="255" />
-    <option name="y" value="251" />
-    <option name="width" value="880" />
-    <option name="height" value="555" />
-=======
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -285,10 +167,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-      <pane id="Scope" />
-=======
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -301,21 +179,11 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-<<<<<<< HEAD
-    </panes>
-  </component>
-  <component name="PropertiesComponent">
-=======
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="http.proxy" />
-=======
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -331,14 +199,7 @@
       </list>
     </option>
   </component>
-<<<<<<< HEAD
   <component name="RunManager" selected="Python.text_proc">
-=======
-<<<<<<< HEAD
-  <component name="RunManager" selected="Python.interfazModel">
-=======
-  <component name="RunManager" selected="Python.index">
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
     <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -357,7 +218,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
     <configuration name="interfazModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -376,11 +236,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-<<<<<<< HEAD
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.interfazModel" />
-=======
     <configuration name="query_expansion" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -427,13 +282,8 @@
       <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Python.text_proc" />
         <item index="1" class="java.lang.String" itemvalue="Python.query_expansion" />
-<<<<<<< HEAD
         <item index="2" class="java.lang.String" itemvalue="Python.index" />
         <item index="3" class="java.lang.String" itemvalue="Python.interfazModel" />
-=======
-        <item index="2" class="java.lang.String" itemvalue="Python.interfazModel" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
       </list>
     </recent_temporary>
   </component>
@@ -442,46 +292,22 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="8bb0a425-42cf-40e5-b390-9cc9ac33c7e9" name="Default" comment="" />
-      <created>1543439883668</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1543439883668</updated>
-=======
       <changelist id="96bc4324-fd96-42f9-9b55-bca797b23227" name="Default" comment="" />
       <created>1543434402517</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543434402517</updated>
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
-    <frame x="59" y="27" width="1307" height="741" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24942617" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-=======
     <frame x="0" y="0" width="1366" height="732" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="100" y="100" width="1166" height="532" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -529,33 +355,7 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/metrics.py">
-=======
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/modelo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1695#1724#0" expanded="false" />
-            <element signature="e#1864#2677#0" expanded="false" />
-            <element signature="e#3750#3773#0" expanded="false" />
-            <element signature="e#4819#4940#0" expanded="false" />
-            <element signature="e#5752#5942#0" expanded="false" />
-            <element signature="e#5969#6087#0" expanded="false" />
-            <element signature="e#6124#6128#0" expanded="false" />
-            <element signature="e#6169#6173#0" expanded="false" />
-            <element signature="e#6214#6218#0" expanded="false" />
-            <element signature="e#7878#8384#0" expanded="false" />
-            <element signature="e#9212#9216#0" expanded="false" />
-            <element signature="e#9258#9262#0" expanded="false" />
-            <element signature="e#9307#9311#0" expanded="false" />
-            <element signature="e#9364#9839#0" expanded="false" />
-=======
-    <entry file="file://$PROJECT_DIR$/interfazModel.py">
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -569,26 +369,12 @@
           <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-<<<<<<< HEAD
             <element signature="e#449#1729#0" expanded="false" />
-=======
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file:///usr/lib/python3.7/re.py">
-=======
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/interfazModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-=======
-    <entry file="file://$PROJECT_DIR$/text_proc.py">
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
@@ -598,14 +384,8 @@
     </entry>
     <entry file="file:///usr/lib/python3.7/json/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="158">
           <caret line="334" column="0" lean-forward="false" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
-=======
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
           <folding />
         </state>
       </provider>
@@ -620,7 +400,6 @@
     </entry>
     <entry file="file:///usr/lib/python3.7/genericpath.py">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="184">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
@@ -631,28 +410,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="-822">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
-        <state relative-caret-position="622">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="108" column="21" lean-forward="false" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
-=======
     <entry file="file://$PROJECT_DIR$/query_expansion.py">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="799">
           <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
@@ -686,11 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="70" column="20" lean-forward="false" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
-=======
-        <state relative-caret-position="119">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
->>>>>>> cc2cb0d23b6646827acc8096f1151a9a65cdd770
->>>>>>> 8d7fbe580f05a249637f24ab969ff73e4381b238
           <folding />
         </state>
       </provider>
