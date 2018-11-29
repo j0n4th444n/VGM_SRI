@@ -71,7 +71,7 @@ def save_indexer(links):
             f.write(link+"\n")
 
 def real_web_name(url : str):
-    return url.count('.ico')
+    return (url.count('.ico') + url.count('.gif') + url.count('.jpg') + url.count('.js')) == 0
 
 def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip = None,port = None):
     l = []
