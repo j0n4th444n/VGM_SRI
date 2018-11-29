@@ -6,7 +6,7 @@ import json
 import index
 from nltk import FreqDist
 import text_proc
-from procesamiento_texto import *
+# from procesamiento_texto import *
 
 
 
