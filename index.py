@@ -16,7 +16,7 @@ def start (json_request):
     elif json_data['action'] == 'delete':
         __delete(json_data['key'])
     elif json_data['action'] == 'terms':
-        __all_term_doc(json_data['key'])
+        return __all_term_doc(json_data['key'])
     elif json_data['action'] == 'get':
         return __get(json_data['key'])
 
@@ -65,25 +65,25 @@ def __get(key):
     return json.dumps(response)
 
 
-# def __all_term_doc(doc):
-#     response = {}
-#     terms = [term for term in index if (doc in index[term]['documents'])]
-#     response['terms'] = terms
-#
-#     return json.dumps(response)
-
-
 def __all_term_doc(doc):
     response = {}
-    terms=[]
-    for term in index:
-        for dicc in index[term]['documents']:
-            if dicc['document']==doc:
-                terms.append(term)
-                break
+    terms = [term for term in index if (doc in index[term]['documents'])]
     response['terms'] = terms
 
     return json.dumps(response)
+
+
+# def __all_term_doc(doc):
+#     response = {}
+#     terms=[]
+#     for term in index:
+#         for dicc in index[term]['documents']:
+#             if dicc['document']==doc:
+#                 terms.append(term)
+#                 break
+#     response['terms'] = terms
+#
+#     return json.dumps(response)
 
 
 
