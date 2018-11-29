@@ -17,6 +17,8 @@ def start (json_request):
         __delete(json_data['key'])
     elif json_data['action'] == 'terms':
         return __all_term_doc(json_data['key'])
+    elif json_data['action'] == 'terms_frec':
+        return __all_term_doc(json_data['key'])
     elif json_data['action'] == 'get':
         return __get(json_data['key'])
 
@@ -66,6 +68,13 @@ def __get(key):
 
 
 def __all_term_doc(doc):
+    response = {}
+    terms = [term for term in index if (doc in index[term]['documents'])]
+    response['terms'] = terms
+
+    return json.dumps(response)
+
+def __all_term_doc_frec(doc):
     response = {}
     terms = [(term, index[term]['documents'][doc]['tf']) for term in index if (doc in index[term]['documents'])]
     response['terms'] = terms
