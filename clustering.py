@@ -138,7 +138,14 @@ def all_doc_from_cluster(doc_name):
     return clust_docs[doc_clust[doc_name]][0]
 
 def all_label_from_cluster(doc_name):
-    return sum(clust_docs[doc_clust[doc_name]][1])
+    result = ""
+    for item in clust_docs[doc_clust[doc_name]][1]:
+        result += item +" "
+    return result
+
+def get_doc_cluster(doc_name):
+    print(doc_clust[doc_name])
+    return doc_clust[doc_name]
 
 def clustering(path_to_corpus,num_clusters):
     __load_corpus(path_to_corpus)   
