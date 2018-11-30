@@ -1,6 +1,8 @@
-## Proyecto de Sistema de Información
-### Modelo Vectorial Generalizado
-Curso 2018-2019
+## <center> Proyecto de Sistema de Información </br> Modelo Vectorial Generalizado </center>
+<center>Beatriz Pérez Vera, Victor Ernesto Puentes Pérez, Jonathan </center>
+</br>
+<center> Facultad de Matemática y Computación </br> Universidad de la Habana </br> Curso 2018-2019 </center>
+
 
 >>**Resumen:** Sistema de Recuperación de Información(SRI) basado en el modelo vectorial generalizado, programado en python. El SRI está compuesto por los 4 módulos fundamentales: Procesamiento de Texto, Modelado, Index e Interfaz. Se implementaron como funcionalidades extras: Crawling, Expansión de consulta y Recomendación de documentos. Estos módulos son independientes, los cuales se comunican entre sí haciendo uso de la biblioteca json, lo que permite escalar fácilmente y mejorar el rendimiento. Con el objetivo de evaluar el SRI fueron implementados los criterios de evaluación pertinentes.
 
@@ -35,9 +37,12 @@ Curso 2018-2019
 >>Los métodos basados ​​en Relevance feedback ejecutan la consulta inicial en el repositorio y extraen los mejores k documentos. Luego, dos documento obtenidos se utilizan para mejorar el rendimiento de la recuperación. Se supone que los documentos iniciales recuperados son relevantes y, por lo tanto, se pueden usar para extraer términos de expansión. Estos modelos fallan cuando el algoritmo de recuperación inicial del motor de búsqueda es deficiente.
 
 >>#### 5.2.1 Pseudo Relevance FeedBack (PRF)
->>> En los modelos basados ​​en Pseudo Relevance Feedback, la consulta inicial se activa y se obtienen los mejores k resultados. Luego los términos importantes, en nuestro caso basados ​​en co-ocurrencia, de estos documentos son extraídos y añadidos a la consulta. Luego, está consulta expandida se vuelve a activar para recuperar el conjunto final de documentos que están disponibles para el usuario. La relevancia de los términos de expansión depende de los documentos iniciales recuperados.
+>>> En los modelos basados ​​en Pseudo Relevance Feedback, la consulta inicial se activa y se obtienen los mejores k resultados. Luego los términos importantes, en nuestro caso basados ​​en co-ocurrencia, de estos documentos son extraídos y añadidos a la consulta. Luego, está consulta expandida se vuelve a activar para recuperar el conjunto final de documentos que están disponibles para el usuario. La relevancia de los términos de expansión depende de los documentos iniciales recuperados. En la siguiente figura se puede observar la idea general de este esquema.
 
->>>![Pseudo Relevance schema](modelo_FB.png)
+
+<p align="center">
+        <img src="modelo_FB.png" width="450">  
+</p>
 
 #### 6. Modelado
 
