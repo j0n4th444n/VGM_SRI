@@ -5,7 +5,7 @@
 # Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
-
+import clustering
 import crawling
 import metrics
 import modelo
@@ -445,6 +445,8 @@ class Ui_MainWindow(object):
         docs = glob.glob(os.path.join(path + "/**", "*.txt"), recursive=True)
         print(docs)
         if not self.lineEdit_select_directory.text() == '':
+            clustering.clustering(path,4)
+
             for i in reversed(range(self.tableWidget_relevant.rowCount())):
                 self.tableWidget_relevant.removeRow(i)
             for item in docs:
@@ -460,6 +462,7 @@ class Ui_MainWindow(object):
                 qhboxlayout.setContentsMargins(0, 0, 0, 0)
 
                 self.tableWidget_relevant.insertRow(row_position)
+                self.tableWidget_relevant.setItem(row_position, 0, clustering.all_label_from_cluster(os.path.basename(path)))
                 self.tableWidget_relevant.setItem(row_position, 1, QTableWidgetItem(os.path.basename(item)))
                 self.tableWidget_relevant.setCellWidget(row_position, 2, qwidget)
 

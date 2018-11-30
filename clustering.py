@@ -137,7 +137,7 @@ def all_doc_from_cluster(doc_name):
     return clust_docs[doc_clust[doc_name]][0]
 
 def all_label_from_cluster(doc_name):
-    return clust_docs[doc_clust[doc_name]][1]
+    return sum(clust_docs[doc_clust[doc_name]][1])
 
 def clustering(path_to_corpus,num_clusters):
     __load_corpus(path_to_corpus)   
@@ -146,7 +146,3 @@ def clustering(path_to_corpus,num_clusters):
     __tf_idf()
     __clustering(num_clusters)
     __printer(num_clusters)
-
-clustering('clust_training',5)
-print(all_doc_from_cluster('1.txt'))
-print(all_label_from_cluster('1.txt'))
