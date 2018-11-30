@@ -71,16 +71,17 @@ def save_indexer(links):
             f.write(link+"\n")
 
 def real_web_name(url : str):
-    return (url.count('.ico') + url.count('.gif') + url.count('.jpg') + url.count('.js')) == 0
+    return (url.count('.ico') + url.count('.gif') + url.count('.jpg') + url.count('.js') + url.count('.png') + url.count('.css')) == 0
 
 def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip = None,port = None):
     l = []
     q = queue.Queue()
     for url in seed_url:
-        q.put((url,1))
+        q.put((url,0))
     while(not q.empty()):
         url,d = q.get()
         l.append(url)
+        print(url)
         html = download(url,proxy)
         links = get_links(html,url)
         text = get_text_from_html(html)
@@ -93,5 +94,5 @@ def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip
                 q.put((link,d+1))
     save_indexer(l)
 
-# seed = ["https://stackoverflow.com/"]
-# crawler(seed,2,False,username,password,host,port)
+seed = ["https://stackoverflow.com/"]
+crawler(seed,1,False,username,password,host,port)
