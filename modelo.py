@@ -79,7 +79,7 @@ def request_query(query, count_doc, similarity_techniques):
 	append_weights(query_data)
 
 	docs = get_docs_from_query(query_terms)
-	dicc_ranking = similarity_cosine(query_data, docs) if similarity_techniques == 0 else similarity_cosine(query_data, docs)
+	dicc_ranking = similarity_cosine(query_data, docs) if similarity_techniques == 0 else similarity_vectorial_model(query_data, docs)
 
 	result= list(zip(dicc_ranking.keys(), dicc_ranking.values()))
 	result.sort(key=lambda x: x[1], reverse=True)
@@ -297,14 +297,7 @@ def similarity_cosine(query_data, docs):
 
 	return dicc_ranking
 
-def similarity_inner_product(query_data, docs):
-	pass
 
-def similarity_dice(query_data, docs):
-	pass
-
-def similarity_jaccard(query_data, docs):
-	pass
 
 def similarity_vectorial_model(query_data, docs):
 	dicc_ranking = {}
@@ -313,7 +306,7 @@ def similarity_vectorial_model(query_data, docs):
 		for tm_query in query_data:
 			if tm_query['key'] in docs[doc]['terms'].keys():
 
-				weight_query = tm_query['value']['documents'][0]['weight']
+				weight_query = tm_query['value']['documents']['query']['weight']
 				index_weight_data = docs[doc]['terms'][tm_query['key']]
 				weight_data = docs[doc]['weights'][index_weight_data]
 				if doc not in dicc_ranking:
