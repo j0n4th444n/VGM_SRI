@@ -103,4 +103,4 @@ def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip
 # seed = ["https://stackoverflow.com/"]
 # crawler(seed,1,False,username,password,host,port)
 
-save_indexer([])
+# save_indexer([])
