@@ -94,5 +94,5 @@ def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip
                 q.put((link,d+1))
     save_indexer(l)
 
-seed = ["https://stackoverflow.com/"]
-crawler(seed,1,False,username,password,host,port)
+# seed = ["https://stackoverflow.com/"]
+# crawler(seed,1,False,username,password,host,port)

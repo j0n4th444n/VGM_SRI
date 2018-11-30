@@ -22,6 +22,7 @@ class Ui_MainWindow(object):
     def __init__(self):
         self.urls_seed = []
         self.build = False
+        self.crawling = False
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
@@ -450,6 +451,7 @@ class Ui_MainWindow(object):
 
 
     def selectDirectory(self):
+        self.crawling = False
         # TODO: vaciar listas
         # TODO: desabilitar botones y habilitarlos cuando termine el build
         self.indexing_label.setText("Indexing Directory")
@@ -461,6 +463,12 @@ class Ui_MainWindow(object):
         self.build_model(path)
 
     def build_model(self,path):
+        list_crawling = []
+        if self.crawling:
+            with open(os.path.join(os.getcwd(),"ind_url/urls.txt"), "r", encoding="utf8", errors="ignore") as f:
+                document = f.read()
+                f.close()
+            list_crawling = [item for item in document.split('/n')]
         self.build = True
         docs = glob.glob(os.path.join(path + "/**", "*.txt"), recursive=True)
         print(docs)
@@ -469,7 +477,7 @@ class Ui_MainWindow(object):
 
             for i in reversed(range(self.tableWidget_relevant.rowCount())):
                 self.tableWidget_relevant.removeRow(i)
-            for item in docs:
+            for item in range(len(docs)):
                 row_position = self.tableWidget_relevant.rowCount()
 
                 qwidget = QWidget()
@@ -480,10 +488,12 @@ class Ui_MainWindow(object):
                 qhboxlayout.addWidget(checkbox)
                 # qhboxlayout.setAlignment(Qt.AlignCenter)
                 qhboxlayout.setContentsMargins(0, 0, 0, 0)
-
+                name = os.path.basename(docs[item])
+                if self.crawling:
+                    name = list_crawling[item]
                 self.tableWidget_relevant.insertRow(row_position)
-                self.tableWidget_relevant.setItem(row_position, 0, QTableWidgetItem(clustering.all_label_from_cluster(os.path.basename(item))))
-                self.tableWidget_relevant.setItem(row_position, 1, QTableWidgetItem(os.path.basename(item)))
+                self.tableWidget_relevant.setItem(row_position, 0, QTableWidgetItem(clustering.all_label_from_cluster()))
+                self.tableWidget_relevant.setItem(row_position, 1, QTableWidgetItem(name))
                 self.tableWidget_relevant.setCellWidget(row_position, 2, qwidget)
 
             self.disable_buttons()
@@ -664,6 +674,7 @@ class Ui_MainWindow(object):
 
 
     def execute_crawler(self):
+        self.crawling =True
         deep = int(self.spinBox_deep_search_crawler.text())
         user_name = self.lineEdit_user_name.text()
         password = self.lineEdit_password.text()
@@ -671,10 +682,10 @@ class Ui_MainWindow(object):
         port = self.lineEdit_port.text()
 
         if user_name == "" and password== "" and host == "" and port == "":
-            crawling.crawler(self.urls_seed, deep, True)
+            crawling.crawler(self.urls_seed, deep, False)
         else:
-            crawling.crawler(self.urls_seed,deep,False,user_name=user_name, password = password, host_ip = host, port = port)
-        path = "path donde se pone el crawling"
+            crawling.crawler(self.urls_seed,deep,True,user_name=user_name, password = password, host_ip = host, port = port)
+        path = os.path.join(os.getcwd(),"crawling")
         self.build_model(path)
 
     def delete_url_to_crawler(self):
