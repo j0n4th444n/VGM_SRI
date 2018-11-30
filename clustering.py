@@ -38,10 +38,11 @@ def __load_corpus(path):
     #     km = joblib.load('doc_cluster.pkl')
     #     clusters = km.labels_.tolist()
     if os.path.isdir(path):
-        for filename in os.listdir(path):
-            with open(os.path.join(path, filename), encoding='utf8', errors='ignore') as f:
-                titles.append(filename)
-                text.append(f.read())
+        for root, dirs, files in os.walk(path):
+            for filename in files:
+                with open(os.path.join(root,filename), encoding='utf8', errors='ignore') as f:
+                    titles.append(filename)
+                    text.append(f.read())
 
 def __tokenize_and_stem(text):
     tokens = [word for sent in nltk.sent_tokenize(text) for word in nltk.word_tokenize(sent)]
@@ -147,6 +148,6 @@ def clustering(path_to_corpus,num_clusters):
     __clustering(num_clusters)
     __printer(num_clusters)
 
-clustering('clust_training',5)
-print(all_doc_from_cluster('1.txt'))
-print(all_label_from_cluster('1.txt'))
+# clustering('clust_training',5)
+# print(all_doc_from_cluster('1.txt'))
+# print(all_label_from_cluster('1.txt'))

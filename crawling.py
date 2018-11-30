@@ -89,7 +89,7 @@ def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip
             q.get()
             continue
         for (link, _) in links:
-            if link not in q.queue or link not in l:
+            if real_web_name(link) and (link not in q.queue or link not in l):
                 q.put((link,d+1))
     save_indexer(l)
 
