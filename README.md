@@ -89,4 +89,3 @@ Estas medidas pueden ser calculadas por el usuario una vez halla realizado la co
 #### 9. Referencias
 1. Baeza-Yates, R., Ribeiro-Neto, B.: Modern Information Retrieval. Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA (1999)
 2. Mills J. Y Keen M Cleverdon, C.W. Factors determining the performance of indexing systems. ASLIB Cranﬁeld Project. Vol. 1, Design, Vol2, Test Results, 1996. 
->>>>>>> 6d6b9c61caa5bc8f8898ec36ccdb5fdc70eb5cb0
