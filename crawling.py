@@ -59,14 +59,20 @@ def get_ip_from_host(url_host):
     return ips[0] if len(ips) > 0 else None
 
 def create_name(folder):    
-    return os.path.join(folder,str(len(os.listdir('crawling')))+".text")
+    return os.path.join(folder,str(len(os.listdir('crawling')))+".txt")
+
+def create_url_name(folder):    
+    return os.path.join(folder,"urls.txt")
 
 def save_doc(url,text):
     with open(create_name('crawling'),'w', encoding='utf8', errors='ignore') as f:
         f.write(text)
 
 def save_indexer(links):
-    with open(create_name('ind_url'),'w', encoding='utf8', errors='ignore') as f:
+    directory = os.path.join(os.getcwd(),'ind_url')
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    with open(create_url_name('ind_url'),'w', encoding='utf8', errors='ignore') as f:
         for link in links:
             f.write(link+"\n")
 
@@ -94,5 +100,3 @@ def crawler(seed_url,deep,proxy = False,user_name = None,password = None,host_ip
                 q.put((link,d+1))
     save_indexer(l)
 
-# seed = ["https://stackoverflow.com/"]
-# crawler(seed,1,False,username,password,host,port)
