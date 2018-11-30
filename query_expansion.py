@@ -1,25 +1,11 @@
-# import modelo
-#
-# synonyms = []
-#
-# for syn in wn.synsets("home"):
-#     for lm in syn.lemmas():
-#              synonyms.append(lm.name())
-# print (set(synonyms))
-#
-#
-# cane_lemmas = wn.lemmas("hombre", lang="spa")
-# print(cane_lemmas)
-#
-#
-#
-# resdef = wn.synset('ocean.n.1').definition()
-# print (resdef)
+from nltk.corpus import stopwords
+from string import punctuation
+from nltk import wordpunct_tokenize
 import json
 import modelo
 import index
-from langdetect import detect
 from nltk.corpus import wordnet as wn
+from langdetect import detect
 
 
 
@@ -33,9 +19,8 @@ def start(json_request):
 
     words = data['query'] + " " + relevant_words
 
-    # TODO: SI LA QUERY ESTA EN INGLES HACEMOS TRABAJO CON SINONIMOS
-    # if detect(data['query']) == 'en':
-    #     words += expansion_synonyms(data['query'])
+    if detect(data['query']) == 'en':
+        words = words + " " + expansion_synonyms(data['query'])
 
     return modelo.request_query(words, data['count'], data['similarity_techniques'])
 
@@ -53,15 +38,32 @@ def pseudo_Relevance_Feedback(documents):
 
     return " ".join(list(relevant_words))
 
-def expansion_synonyms(query):
+def expansion_synonyms(data):
 
+    spanish_stop = stopwords.words('spanish')
+    english_stop = stopwords.words('english')
+    all_stopwords = spanish_stop + english_stop
+    non_words = list(punctuation)
+
+    # we add spanish punctuation
+    non_words.extend(['¿', '¡'])
+    non_words.extend(map(str, range(10)))
+    tokens = wordpunct_tokenize(data)
+
+    tokens = [elem for elem in tokens if (elem not in all_stopwords and elem not in non_words)]
+
+    words=[]
     synonyms = []
+    for token in tokens:
+        print(token)
+        for syn in wn.synsets(token):
+            # print(syn.lemmas())
+            for lm in syn.lemmas():
+                # print(lm/)
+                synonyms.append(lm.name())
 
-    for syn in wn.synsets(query):
-        for lm in syn.lemmas():
-                 synonyms.append(lm.name())
-    print (set(synonyms))
+        synonyms = (set(synonyms))
+        words.extend(list(synonyms)[:2])
+        synonyms = []
 
-
-
-# expansion_synonyms("work")
+    return " ".join(words)

@@ -2,7 +2,7 @@
 ### Modelo Vectorial Generalizado
 Curso 2018-2019
 
->>**Resumen:** Sistema de Recuperación de Información(SRI) basado en el modelo vectorial generalizado, programado en python. El SRI está compuesto por los 4 módulos fundamentales: Procesamiento de Texto, Modelado, Index e Interfaz. Se implementaron como funcionalidades extras: Crawling, Expansión de consulta y Recomendación de documentos. Estos módulos son independientes entre sí, los cuales se comunican entre sí haciendo uso de la biblioteca json, lo que permite escalar fácilmente y mejorar el rendimiento. Con el objetivo de evaluar el SRI fueron implementados los criterios de evaluación pertinentes.
+>>**Resumen:** Sistema de Recuperación de Información(SRI) basado en el modelo vectorial generalizado, programado en python. El SRI está compuesto por los 4 módulos fundamentales: Procesamiento de Texto, Modelado, Index e Interfaz. Se implementaron como funcionalidades extras: Crawling, Expansión de consulta y Recomendación de documentos. Estos módulos son independientes, los cuales se comunican entre sí haciendo uso de la biblioteca json, lo que permite escalar fácilmente y mejorar el rendimiento. Con el objetivo de evaluar el SRI fueron implementados los criterios de evaluación pertinentes.
 
 **Keywords:** sistema de recuperación de información, modelo vectorial generalizado, crawling, expansion de consulta, index, json.
 
@@ -89,4 +89,3 @@ Estas medidas pueden ser calculadas por el usuario una vez halla realizado la co
 #### 9. Referencias
 1. Baeza-Yates, R., Ribeiro-Neto, B.: Modern Information Retrieval. Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA (1999)
 2. Mills J. Y Keen M Cleverdon, C.W. Factors determining the performance of indexing systems. ASLIB Cranﬁeld Project. Vol. 1, Design, Vol2, Test Results, 1996. 
->>>>>>> 6d6b9c61caa5bc8f8898ec36ccdb5fdc70eb5cb0
