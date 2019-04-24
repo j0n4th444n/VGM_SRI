@@ -5,7 +5,7 @@
 # Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
-
+import clustering
 import crawling
 import metrics
 import modelo
@@ -21,6 +21,8 @@ import PyQt5.QtCore as Qt
 class Ui_MainWindow(object):
     def __init__(self):
         self.urls_seed = []
+        self.build = False
+        self.crawling = False
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
@@ -225,8 +227,6 @@ class Ui_MainWindow(object):
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.gridLayout_3.addWidget(self.comboBox, 0, 1, 1, 1)
         self.verticalLayout_8.addWidget(self.frame_7)
         self.label_query = QtWidgets.QLabel(self.groupBox_2)
@@ -295,6 +295,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.tableWidget_relevant)
         self.verticalLayout_5.addWidget(self.frame_5)
         self.tabWidget.addTab(self.SelectRelevantDocument, "")
+        self.tab_3 = QtWidgets.QWidget()
+        self.tab_3.setObjectName("tab_3")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.tab_3)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.tableWidget_recomended_documents = QtWidgets.QTableWidget(self.tab_3)
+        self.tableWidget_recomended_documents.setObjectName("tableWidget_recomended_documents")
+        self.tableWidget_recomended_documents.setColumnCount(1)
+        self.tableWidget_recomended_documents.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_recomended_documents.setHorizontalHeaderItem(0, item)
+        self.verticalLayout_11.addWidget(self.tableWidget_recomended_documents)
+        self.tabWidget.addTab(self.tab_3, "")
         self.verticalLayout_3.addWidget(self.tabWidget)
         self.verticalLayout.addWidget(self.frame_3)
         self.groupBox_3 = QtWidgets.QGroupBox(self.frame)
@@ -346,8 +358,8 @@ class Ui_MainWindow(object):
         self.actionsasa.setObjectName("actionsasa")
 
         self.retranslateUi(MainWindow)
-        self.tabWidget_2.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(1)
         self.toolButton_select_directory.clicked.connect(self.selectDirectory)
         self.pushButton_query.clicked.connect(self.make_query)
         self.pushButton_CalculateMedida.clicked.connect(self.calculate_metrics)
@@ -356,8 +368,12 @@ class Ui_MainWindow(object):
         self.pushButton_delete_urls.clicked.connect(self.delete_url_to_crawler)
         self.pushButton_crawling.clicked.connect(self.execute_crawler)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.tabWidget_2, self.lineEdit_select_directory)
+        MainWindow.setTabOrder(self.lineEdit_select_directory, self.toolButton_select_directory)
+        MainWindow.setTabOrder(self.toolButton_select_directory, self.lineEdit_crawling)
         MainWindow.setTabOrder(self.lineEdit_crawling, self.pushButton_add_crawling)
-        MainWindow.setTabOrder(self.pushButton_add_crawling, self.pushButton_delete_urls)
+        MainWindow.setTabOrder(self.pushButton_add_crawling, self.tableWidget_crawling)
+        MainWindow.setTabOrder(self.tableWidget_crawling, self.pushButton_delete_urls)
         MainWindow.setTabOrder(self.pushButton_delete_urls, self.lineEdit_user_name)
         MainWindow.setTabOrder(self.lineEdit_user_name, self.lineEdit_password)
         MainWindow.setTabOrder(self.lineEdit_password, self.lineEdit_host)
@@ -368,13 +384,14 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.lineEdit_query, self.spinBox_query)
         MainWindow.setTabOrder(self.spinBox_query, self.pushButton_query)
         MainWindow.setTabOrder(self.pushButton_query, self.comboBox)
-        MainWindow.setTabOrder(self.comboBox, self.tabWidget)
-        MainWindow.setTabOrder(self.tabWidget, self.tableWidget_results)
-        MainWindow.setTabOrder(self.tableWidget_results, self.lineEdit_beta)
+        MainWindow.setTabOrder(self.comboBox, self.tableWidget_relevant)
+        MainWindow.setTabOrder(self.tableWidget_relevant, self.tabWidget)
+        MainWindow.setTabOrder(self.tabWidget, self.lineEdit_beta)
         MainWindow.setTabOrder(self.lineEdit_beta, self.comboBox_medida)
         MainWindow.setTabOrder(self.comboBox_medida, self.lineEdit_medida)
         MainWindow.setTabOrder(self.lineEdit_medida, self.pushButton_CalculateMedida)
-        MainWindow.setTabOrder(self.pushButton_CalculateMedida, self.tableWidget_relevant)
+        MainWindow.setTabOrder(self.pushButton_CalculateMedida, self.tableWidget_results)
+        MainWindow.setTabOrder(self.tableWidget_results, self.tableWidget_recomended_documents)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -400,9 +417,7 @@ class Ui_MainWindow(object):
         self.pushButton_query.setText(_translate("MainWindow", "Consult"))
         self.label_3.setText(_translate("MainWindow", "Similarity Techniques"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Cosine Similarity"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "Inner Product"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "Dice Similarity"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "Jaccard Similarity"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "Vectorial Model"))
         item = self.tableWidget_results.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Group"))
         item = self.tableWidget_results.horizontalHeaderItem(1)
@@ -417,6 +432,9 @@ class Ui_MainWindow(object):
         item = self.tableWidget_relevant.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Relevance"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.SelectRelevantDocument), _translate("MainWindow", "Select Relevant Document"))
+        item = self.tableWidget_recomended_documents.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Documento"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "Recomended Docs"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Metrics"))
         self.label_2.setText(_translate("MainWindow", "Beta"))
         self.comboBox_medida.setItemText(0, _translate("MainWindow", "P"))
@@ -427,10 +445,13 @@ class Ui_MainWindow(object):
         self.pushButton_CalculateMedida.setText(_translate("MainWindow", "Calculate"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab), _translate("MainWindow", "Query"))
         self.actionsasa.setText(_translate("MainWindow", "sasa"))
+
         self.pushButton_crawling.setEnabled(False)
         self.pushButton_delete_urls.setEnabled(False)
 
+
     def selectDirectory(self):
+        self.crawling = False
         # TODO: vaciar listas
         # TODO: desabilitar botones y habilitarlos cuando termine el build
         self.indexing_label.setText("Indexing Directory")
@@ -442,12 +463,21 @@ class Ui_MainWindow(object):
         self.build_model(path)
 
     def build_model(self,path):
+        list_crawling = []
+        if self.crawling:
+            with open(os.path.join(os.getcwd(),"ind_url/urls.txt"), "r", encoding="utf8", errors="ignore") as f:
+                document = f.read()
+                f.close()
+            list_crawling = [item for item in document.split('/n')]
+        self.build = True
         docs = glob.glob(os.path.join(path + "/**", "*.txt"), recursive=True)
         print(docs)
         if not self.lineEdit_select_directory.text() == '':
+            clustering.clustering(path+"/",4)
+
             for i in reversed(range(self.tableWidget_relevant.rowCount())):
                 self.tableWidget_relevant.removeRow(i)
-            for item in docs:
+            for item in range(len(docs)):
                 row_position = self.tableWidget_relevant.rowCount()
 
                 qwidget = QWidget()
@@ -458,9 +488,12 @@ class Ui_MainWindow(object):
                 qhboxlayout.addWidget(checkbox)
                 # qhboxlayout.setAlignment(Qt.AlignCenter)
                 qhboxlayout.setContentsMargins(0, 0, 0, 0)
-
+                name = os.path.basename(docs[item])
+                if self.crawling:
+                    name = list_crawling[item]
                 self.tableWidget_relevant.insertRow(row_position)
-                self.tableWidget_relevant.setItem(row_position, 1, QTableWidgetItem(os.path.basename(item)))
+                self.tableWidget_relevant.setItem(row_position, 0, QTableWidgetItem(clustering.all_label_from_cluster()))
+                self.tableWidget_relevant.setItem(row_position, 1, QTableWidgetItem(name))
                 self.tableWidget_relevant.setCellWidget(row_position, 2, qwidget)
 
             self.disable_buttons()
@@ -477,34 +510,47 @@ class Ui_MainWindow(object):
             #     self.disable_buttons()
 
     def make_query(self):
+        if self.lineEdit_query.text() != "" and self.build:
 
-        for i in reversed(range(self.tableWidget_results.rowCount())):
-            self.tableWidget_results.removeRow(i)
-        query = self.lineEdit_query.text()
-        count_docs = self.spinBox_query.value()
-        similarity_techniques = self.comboBox.currentIndex()
+            for i in reversed(range(self.tableWidget_results.rowCount())):
+                self.tableWidget_results.removeRow(i)
+            query = self.lineEdit_query.text()
+            count_docs = self.spinBox_query.value()
+            similarity_techniques = self.comboBox.currentIndex()
 
-        # TODO: llamar query_request
-        # TODO: poner campo con similaridad
-        # TODO: ponerle el count
-        # TODO: poner label de procesamiento de texto
-        # TODO:cuando la consulta sta vacia arreglar el error
-        self.disable_buttons()
-        self.label_query.setText("execcuting query")
+            # TODO: llamar query_request
+            # TODO: poner campo con similaridad
+            # TODO: ponerle el count
+            # TODO: poner label de procesamiento de texto
+            # TODO:cuando la consulta sta vacia arreglar el error
+            self.disable_buttons()
+            self.label_query.setText("execcuting query")
 
-        json_value = json.dumps({'action': 'query', 'query': query, 'count': count_docs, 'similarity_techniques': similarity_techniques})
+            json_value = json.dumps({'action': 'query', 'query': query, 'count': count_docs, 'similarity_techniques': similarity_techniques})
 
-        json_result = json.loads(query_expansion.start(json_value))
+            json_result = json.loads(query_expansion.start(json_value))
 
-        for pair in json_result['results']:
-            row_position = self.tableWidget_results.rowCount()
-            print(type(row_position))
-            self.tableWidget_results.insertRow(row_position)
+            for pair in json_result['results']:
+                row_position = self.tableWidget_results.rowCount()
+                print(type(row_position))
+                self.tableWidget_results.insertRow(row_position)
 
-            self.tableWidget_results.setItem(row_position, 1, QTableWidgetItem(str(pair["document"])))
-            self.tableWidget_results.setItem(row_position, 2, QTableWidgetItem(str(pair["match"])))
-        self.enable_buttons()
-        self.label_query.setText("")
+                self.tableWidget_results.setItem(row_position, 0, QTableWidgetItem(clustering.all_label_from_cluster(str(pair["document"]))))
+                self.tableWidget_results.setItem(row_position, 1, QTableWidgetItem(str(pair["document"])))
+                self.tableWidget_results.setItem(row_position, 2, QTableWidgetItem(str(pair["match"])))
+
+            list_recomended_docs = clustering.all_doc_from_cluster(json_result['results'][0]['document'])
+
+            for item in list_recomended_docs:
+                row_position = self.tableWidget_recomended_documents.rowCount()
+                print(type(row_position))
+                self.tableWidget_recomended_documents.insertRow(row_position)
+
+                # self.tableWidget_recomended_documents.setItem(row_position, 0, QTableWidgetItem(clustering.get_doc_cluster(item)))
+                self.tableWidget_recomended_documents.setItem(row_position, 0, QTableWidgetItem(item))
+
+            self.enable_buttons()
+            self.label_query.setText("")
 
 
     def disable_buttons(self):
@@ -615,6 +661,7 @@ class Ui_MainWindow(object):
 
     def add_url_to_crawler(self):
         row_position = self.tableWidget_relevant.rowCount()
+
         if self.lineEdit_crawling.text() != "":
             self.tableWidget_crawling.insertRow(row_position)
             self.tableWidget_crawling.setItem(row_position, 1, QTableWidgetItem(self.lineEdit_crawling.text()))
@@ -627,6 +674,7 @@ class Ui_MainWindow(object):
 
 
     def execute_crawler(self):
+        self.crawling =True
         deep = int(self.spinBox_deep_search_crawler.text())
         user_name = self.lineEdit_user_name.text()
         password = self.lineEdit_password.text()
@@ -634,10 +682,10 @@ class Ui_MainWindow(object):
         port = self.lineEdit_port.text()
 
         if user_name == "" and password== "" and host == "" and port == "":
-            crawling.crawler(self.urls_seed, deep, True)
+            crawling.crawler(self.urls_seed, deep, False)
         else:
-            crawling.crawler(self.urls_seed,deep,False,user_name=user_name, password = password, host_ip = host, port = port)
-        path = "path donde se pone el crawling"
+            crawling.crawler(self.urls_seed,deep,True,user_name=user_name, password = password, host_ip = host, port = port)
+        path = os.path.join(os.getcwd(),"crawling")
         self.build_model(path)
 
     def delete_url_to_crawler(self):
@@ -650,6 +698,8 @@ class Ui_MainWindow(object):
         for item in range(count_docs):
             self.tableWidget_crawling.removeRow(0)
         self.urls_seed = []
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
