@@ -1,10 +1,17 @@
+$$ ad $$
+
+
 ## <center> Proyecto de Sistema de Información </br> Modelo Vectorial Generalizado </center>
-<center>Beatriz Pérez Vera, Victor Ernesto Puentes Pérez, Jonathan </center>
+<center>Beatriz Pérez Vera, Victor Ernesto Puentes Pérez, Jonathan Figeroa Rodriguez</center>
 </br>
 <center> Facultad de Matemática y Computación </br> Universidad de la Habana </br> Curso 2018-2019 </center>
 
 
->>**Resumen:** Sistema de Recuperación de Información(SRI) basado en el modelo vectorial generalizado, programado en python. El SRI está compuesto por los 4 módulos fundamentales: Procesamiento de Texto, Modelado, Index e Interfaz. Se implementaron como funcionalidades extras: Crawling, Expansión de consulta y Recomendación de documentos. Estos módulos son independientes, los cuales se comunican entre sí haciendo uso de la biblioteca json, lo que permite escalar fácilmente y mejorar el rendimiento. Con el objetivo de evaluar el SRI fueron implementados los criterios de evaluación pertinentes.
+
+
+
+
+>>**Resumen:** Sistema de Recuperación de Información(SRI) basado en el modelo vectorial generalizado, programado en python. El SRI está compuesto por los 4 módulos fundamentales: Procesamiento de Texto, Modelado, Index e Interfaz. Se implementaron como funcionalidades extras: Crawling, Expansión de consulta y Recomendación de documentos. Estos módulos son independientes   , los cuales se comunican entre sí haciendo uso de la biblioteca json, lo que permite escalar fácilmente y mejorar el rendimiento. Con el objetivo de evaluar el SRI fueron implementados los criterios de evaluación pertinentes.
 
 **Keywords:** sistema de recuperación de información, modelo vectorial generalizado, crawling, expansion de consulta, index, json.
 
