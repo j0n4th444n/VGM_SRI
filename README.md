@@ -1,4 +1,3 @@
-$$ ad $$
 
 
 ## <center> Proyecto de Sistema de Información </br> Modelo Vectorial Generalizado </center>
